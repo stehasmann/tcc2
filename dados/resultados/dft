@@ -1,0 +1,15 @@
+title "H2 DFT PBE/STO-3G"
+geometry
+  H  0.00  0.00  0.00
+  H  0.00  0.00  d
+end
+basis
+  * library sto-3g
+end
+dft
+  xc pbe96
+end
+task dft energy
+
+dft_interp = interp1d(dft_dist, dft_energy, kind='cubic',
+                      bounds_error=False, fill_value='extrapolate');
